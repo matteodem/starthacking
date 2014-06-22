@@ -3,19 +3,24 @@
 
 
 .header-wrapper {
-    background-image: url('/images/background/background1.jpg');
-    height: 450px;
-    background-position: 100% 100%;
+    background-image: url('https://farm8.staticflickr.com/7203/7142838365_dd1f07944c_h.jpg');
+    height: 300px;
+    background-position: 100% -200px;
     transition: height 0.8s;
-        color: @secondaryFontColor;
+    color: @secondaryFontColor;
 
     .ui.header {
         font-size: 3em;
-        padding-top: 160px;
+        padding-top: 90px;
+        text-shadow: 0 0 4px black;
 
         > .sub.header {
             color: @secondaryFontColorVariation;
         }
+    }
+
+    .description {
+        text-shadow: 0 0 2px black;
     }
 
     .resize.button {

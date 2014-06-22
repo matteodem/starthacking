@@ -7,10 +7,15 @@
    ------------------- */
 
 body, #main {
-    margin: 0px;
-    padding: 0px;
+    margin: 0 0 52px 0;
+    padding: 0;
     overflow-x: hidden;
     font-family: 'Fauna One', serif;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
 }
 
 #main {
@@ -33,7 +38,11 @@ a {
 }
 
 .ui.header {
-    font-family: 'Glegoo', serif;
+    font-family: 'PT Sans', serif;
+}
+
+input[type=text]:focus, textarea:focus {
+    box-shadow: 0 0 10px rgba(91, 92, 92, 0.36);
 }
 
 /* -------------------
@@ -41,6 +50,11 @@ a {
    ------------------- */
 .padding-wrapper.footer {
     border-radius: 0px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    height: 52px;
+    width: 100%;
 
     a:hover {
         color: @secondaryLinkHoverColor;

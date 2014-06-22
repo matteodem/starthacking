@@ -1,11 +1,14 @@
 <template name="searchbar">
-    <input id="globalSearchbar" type="text" placeholder="Search for Sites..." />
-    <div class="dropdown">
-        <!-- Link or button to toggle dropdown -->
-        <ul class="list-unstyled">
-            {{#each foundSite}}
-            <li><a href="{{originalPath}}">{{name}}</a></li>
-            {{/each}}
-        </ul>
+    <div class="ui grid">
+        <div class="four wide column">
+        </div>
+        <div class="eight wide column">
+            <div class="ui huge fluid icon input">
+                <input id="globalSearchbar" type="text" placeholder="Search for Languages, Frameworks or Online Books" />
+                <i class="{{interaction}} icon"></i>
+            </div>
+        </div>
+        <div class="four wide column">
+        </div>
     </div>
 </template>
