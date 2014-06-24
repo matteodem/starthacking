@@ -2,4 +2,20 @@
     <div class="main-content padding-wrapper">
         {{> searchbar}}
     </div>
+
+    <div class="ui padding-wrapper centered-container">
+        <div class="ui divided relaxed list">
+        {{#esEach index="resources"}}
+            <a href="{{link}}" target="_blank" class="item animated fadeInLeft">
+                <div class="content">
+                    ({{category}})<div class="header">{{name}}</div>
+                </div>
+            </a>
+        {{/esEach}}
+        </div>
+
+        {{#ifEsHasNoResults index="resources"}}
+        <div class="no-results">No results found!</div>
+        {{/ifEsHasNoResults}}
+    </div>
 </template>

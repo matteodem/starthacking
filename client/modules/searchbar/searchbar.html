@@ -1,14 +1,8 @@
 <template name="searchbar">
-    <div class="ui grid">
-        <div class="four wide column">
-        </div>
-        <div class="eight wide column">
-            <div class="ui huge fluid icon input">
-                <input id="globalSearchbar" type="text" placeholder="Search for Languages, Frameworks or Online Books" />
-                <i class="{{interaction}} icon"></i>
-            </div>
-        </div>
-        <div class="four wide column">
+    <div class="centered-container">
+        <div id="globalSearchbar" class="ui {{positionClass}} huge fluid icon input">
+            {{> esInput index="resources" placeholder="Search for Languages, Frameworks or Online Books" }}
+            <i class="{{interaction}} icon"></i>
         </div>
     </div>
 </template>

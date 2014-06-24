@@ -4,6 +4,9 @@
     "handlebar-helpers": {},
     "iron-router-progress": {},
     "semantic-ui": {},
-    "collection2": {}
+    "collection2": {},
+    "sugarjs": {},
+    "easy-search": {},
+    "animate-css": {}
   }
 }
