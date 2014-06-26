@@ -1,15 +1,30 @@
 var searchTermCache = '';
 
+Session.setDefault('searchMode', 'initial');
+
 Template.searchbar.created = function () {
-  Session.setDefault('searchMode', 'search');
+  EasySearch.changeProperty('resources', 'limit', 1000);
+
+  Deps.autorun(function () {
+    if (Session.get('esSearchingDone_resources')) {
+      Session.set('searchMode', 'done');
+    }
+  });
 };
 
 Template.searchbar.helpers({
-  'interaction' : function () {
-    return Session.get('searchMode');
+  'inputIconClass' : function () {
+    switch (Session.get('searchMode')) {
+      case 'initial':
+        return 'search';
+      case 'searching':
+        return 'loading';
+      case 'done':
+        return 'lightbulb';
+    }
   },
   'positionClass' : function () {
-    if (Session.equals('searchMode', 'loading') || Session.equals('searchMode', 'lightbulb')) {
+    if (Session.equals('searchMode', 'searching') || Session.equals('searchMode', 'done')) {
       return 'left';
     }
   }
@@ -17,20 +32,20 @@ Template.searchbar.helpers({
 
 Template.searchbar.events({
   'keyup #globalSearchbar input' : function (e) {
-    var searchValue = $(e.target).val().compact();
+      var searchValue = $(e.target).val().compact();
 
-    if (searchTermCache === searchValue) {
-      return;
-    }
+      if (searchTermCache === searchValue) {
+        return;
+      }
 
-    if (searchValue.length > 0) {
-      Session.set('searchMode', 'loading');
-      searchTermCache = searchValue;
-      // TODO: Meteor.Collection.initEasySearch(fields, limit) ?
-      // TODO: Meteor.Collection.easySearchCallbacks() ?
-      setTimeout(function () { Session.set('searchMode', 'lightbulb'); }, 1000);
-    } else {
-      Session.set('searchMode', 'search');
-    }
+      if (searchValue.length > 0) {
+        Session.set('searchMode', 'searching');
+        searchTermCache = searchValue;
+        // TODO: Meteor.Collection.initEasySearch(fields, limit) ?
+        // TODO: Meteor.Collection.easySearchCallbacks() ?
+        // TODO: A way to load more with the count
+      } else {
+        Session.set('searchMode', 'initial');
+      }
   }
 });

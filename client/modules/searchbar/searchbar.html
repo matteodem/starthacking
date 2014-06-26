@@ -1,8 +1,8 @@
 <template name="searchbar">
     <div class="centered-container">
         <div id="globalSearchbar" class="ui {{positionClass}} huge fluid icon input">
-            {{> esInput index="resources" placeholder="Search for Languages, Frameworks or Online Books" }}
-            <i class="{{interaction}} icon"></i>
+            {{> esInput index="resources" timeout=500 placeholder="Search for Languages, Frameworks or Online Books" }}
+            <i class="{{inputIconClass}} icon"></i>
         </div>
     </div>
 </template>

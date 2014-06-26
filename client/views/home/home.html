@@ -3,16 +3,27 @@
         {{> searchbar}}
     </div>
 
-    <div class="ui padding-wrapper centered-container">
-        <div class="ui divided relaxed list">
-        {{#esEach index="resources"}}
-            <a href="{{link}}" target="_blank" class="item animated fadeInLeft">
-                <div class="content">
-                    ({{category}})<div class="header">{{name}}</div>
-                </div>
-            </a>
-        {{/esEach}}
-        </div>
+    <div class="ui centered-container">
+
+        {{#if notPerformedSearch}}
+            <div class="ui purple resources info inverted segment">
+                <span class="small animated fadeInUp ui header">
+                    {{resourcesCount}} online resources available to search.
+                </span>
+                For example <a href="" class="search-example">C#</a>, <a href="" class="search-example">Android</a> or
+                <a href="" class="search-example">AngularJS</a>
+            </div>
+        {{else}}
+            <div class="ui divided relaxed list">
+                {{#esEach index="resources"}}
+                <a href="{{link}}" target="_blank" class="item animated fadeInLeft">
+                    <div class="content">
+                        ({{category}})<div class="header">{{name}}</div>
+                    </div>
+                </a>
+                {{/esEach}}
+            </div>
+        {{/if}}
 
         {{#ifEsHasNoResults index="resources"}}
         <div class="no-results">No results found!</div>
