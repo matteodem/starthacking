@@ -37,9 +37,6 @@ Resources.allow({
 
 
 // Easy Search Configuration
-EasySearch.createSearchIndex('resources', {
-  'collection'    : Resources,
-  'field'         : ['name', 'url'],
-  'limit'         : 20,
-  'use'           : 'mongo-db'
+Resources.initEasySearch(['name', 'link'], {
+  limit : 10
 });

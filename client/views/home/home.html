@@ -1,28 +1,33 @@
 <template name="home">
-    <div class="main-content padding-wrapper">
+    <div class="main-content">
         {{> searchbar}}
     </div>
 
     <div class="ui centered-container">
-
         {{#if notPerformedSearch}}
             <div class="ui purple resources info inverted segment">
                 <span class="small animated fadeInUp ui header">
-                    {{resourcesCount}} online resources available to search.
+                    {{resourcesCount}} resources available to search.
                 </span>
-                For example <a href="" class="search-example">C#</a>, <a href="" class="search-example">Android</a> or
-                <a href="" class="search-example">AngularJS</a>
+                <span class="not-mobile">
+                    For example <a href="" class="search-example">C#</a>, <a href="" class="search-example">Android</a> or
+                    <a href="" class="search-example">AngularJS</a>
+                </span>
             </div>
         {{else}}
-            <div class="ui divided relaxed list">
-                {{#esEach index="resources"}}
-                <a href="{{link}}" target="_blank" class="item animated fadeInLeft">
-                    <div class="content">
-                        ({{category}})<div class="header">{{name}}</div>
-                    </div>
-                </a>
-                {{/esEach}}
-            </div>
+            {{#ifEsIsSearching index="resources"}}
+            {{else}}
+                <div class="ui divided relaxed list">
+                    {{#esEach index="resources"}}
+                    <a href="{{link}}" target="_blank" class="item animated fadeInLeft">
+                        <div class="content">
+                            ({{category}})<div class="header">{{name}}</div>
+                        </div>
+                    </a>
+                    {{/esEach}}
+                </div>
+            {{/ifEsIsSearching}}
+            {{> esLoadMoreButton index="resources" classes="ui basic button" howMany=20 }}
         {{/if}}
 
         {{#ifEsHasNoResults index="resources"}}

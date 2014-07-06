@@ -6,7 +6,7 @@
     Main Content
    ------------------- */
 
-body, #main {
+body {
     margin: 0 0 52px 0;
     padding: 0;
     overflow-x: hidden;
@@ -48,6 +48,12 @@ input[type=text]:focus, textarea:focus {
 .centered-container {
     max-width: 860px;
     margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+    .not-mobile {
+        display: none;
+    }
 }
 
 /* -------------------

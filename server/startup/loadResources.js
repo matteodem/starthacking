@@ -1,7 +1,7 @@
 Meteor.startup(function () {
   var githubUrl = 'https://raw.githubusercontent.com/vhf/free-programming-books/master/';
 
-  HTTP.get(githubUrl + 'free-programming-books.md', function (err, res) {
+  /*HTTP.get(githubUrl + 'free-programming-books.md', function (err, res) {
     var category = '',
       subcategory = '';
 
@@ -10,10 +10,7 @@ Meteor.startup(function () {
       return;
     }
 
-
-
-    // TODO: Cron
-
+    // TODO: still got wrong data (Javascript and Node FUNdamentals)
     Resources.remove({ });
     res.content.split('\n').compact(true).each(function (line) {
       var ct;
@@ -45,5 +42,5 @@ Meteor.startup(function () {
         });
       }
     });
-  });
+  });*/
 });

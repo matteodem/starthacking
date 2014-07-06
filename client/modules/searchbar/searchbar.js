@@ -3,10 +3,8 @@ var searchTermCache = '';
 Session.setDefault('searchMode', 'initial');
 
 Template.searchbar.created = function () {
-  EasySearch.changeProperty('resources', 'limit', 1000);
-
   Deps.autorun(function () {
-    if (Session.get('esSearchingDone_resources')) {
+    if (EasySearch.ComponentVariables.get('resources', 'searchingDone')) {
       Session.set('searchMode', 'done');
     }
   });
@@ -41,9 +39,6 @@ Template.searchbar.events({
       if (searchValue.length > 0) {
         Session.set('searchMode', 'searching');
         searchTermCache = searchValue;
-        // TODO: Meteor.Collection.initEasySearch(fields, limit) ?
-        // TODO: Meteor.Collection.easySearchCallbacks() ?
-        // TODO: A way to load more with the count
       } else {
         Session.set('searchMode', 'initial');
       }
