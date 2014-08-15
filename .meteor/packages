@@ -18,3 +18,5 @@ sugarjs
 http
 easy-search
 animate-css
+velocity-html-reporter
+mocha-web-velocity
