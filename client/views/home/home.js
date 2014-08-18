@@ -4,6 +4,18 @@ Template.home.helpers({
   },
   'resourcesCount' : function () {
     return Resources.find().count();
+  },
+  'iconClass' : function () {
+    switch (this.type) {
+      case 'interactive':
+        return 'browser';
+      case 'course':
+        return 'archive';
+      case 'podcast':
+        return 'play sign';
+      default:
+        return this.type;
+    }
   }
 });
 

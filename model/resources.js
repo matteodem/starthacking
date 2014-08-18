@@ -14,9 +14,6 @@ Resources = new Meteor.Collection('resources', {
     },
     likes :  {
       type : Number
-    },
-    dislikes :  {
-      type : Number
     }
   })
 });
@@ -25,13 +22,13 @@ Resources = new Meteor.Collection('resources', {
 // Add custom permission rules if needed
 Resources.allow({
   insert : function () {
-    return true;
+    return false;
   },
   update : function () {
-    return true;
+    return false;
   },
   remove : function () {
-    return true;
+    return false;
   }
 });
 

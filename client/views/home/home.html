@@ -17,9 +17,10 @@
         {{else}}
             {{#ifEsIsSearching index="resources"}}
             {{else}}
-                <div class="ui divided relaxed list">
+                <div class="ui divided relaxed results list">
                     {{#esEach index="resources"}}
                     <a href="{{link}}" target="_blank" class="item animated fadeInLeft">
+                        <i class="{{iconClass}} course-type icon"></i>
                         <div class="content">
                             ({{category}})<div class="header">{{name}}</div>
                         </div>
