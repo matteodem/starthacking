@@ -3,16 +3,23 @@
         {{> searchbar}}
     </div>
 
+
     <div class="ui centered-container">
         {{#if notPerformedSearch}}
             <div class="ui purple resources info inverted segment">
-                <span class="small animated fadeInUp ui header">
-                    {{resourcesCount}} resources available to search.
-                </span>
-                <span class="not-mobile">
-                    For example <a href="" class="search-example">C#</a>, <a href="" class="search-example">Android</a> or
-                    <a href="" class="search-example">AngularJS</a>
-                </span>
+                {{#if moreThanZeroResources}}
+                    <span class="small animated fadeInUp ui header">
+                        {{resourcesCount}} resources available to search.
+                    </span>
+                    <span class="not-mobile">
+                        For example <a href="" class="search-example">C#</a>, <a href="" class="search-example">Android</a> or
+                        <a href="" class="search-example">AngularJS</a>
+                    </span>
+                {{else}}
+                    <span>
+                        <i class="loading icon"></i> loading resources...
+                    </span>
+                {{/if}}
             </div>
         {{else}}
             {{#ifEsIsSearching index="resources"}}

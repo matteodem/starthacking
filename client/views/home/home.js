@@ -2,6 +2,9 @@ Template.home.helpers({
   'notPerformedSearch' : function () {
     return Session.equals('searchMode', 'initial');
   },
+  'moreThanZeroResources' : function () {
+    return Resources.find().count() > 0;
+  },
   'resourcesCount' : function () {
     return Resources.find().count();
   },
