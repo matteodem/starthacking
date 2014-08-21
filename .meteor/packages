@@ -18,3 +18,5 @@ sugarjs
 http
 easy-search
 animate-css
+accounts-guest
+cron-tick

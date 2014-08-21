@@ -1,12 +1,14 @@
 {
   "packages": {
-    "iron-router": {},
+    "iron-router": "0.8.2",
     "handlebar-helpers": {},
     "iron-router-progress": {},
     "semantic-ui": {},
     "collection2": {},
     "sugarjs": {},
     "easy-search": {},
-    "animate-css": {}
+    "animate-css": {},
+    "accounts-guest": {},
+    "cron-tick": {}
   }
 }

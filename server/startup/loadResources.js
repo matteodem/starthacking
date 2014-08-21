@@ -32,7 +32,7 @@ function importResources(type, importUrl) {
             url = bookParts[1].slice(0, -1).remove(/(\)|\(|\[|\]).+/g);
 
           if (url.startsWith('http')) {
-            Resources.insert({ name : name, link : url, type : type, category : ct, likes : 0 });
+            Resources.insert({ name : name, link : url, type : type, category : ct, likes : [] });
           }
         });
       }

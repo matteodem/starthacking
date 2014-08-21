@@ -21,6 +21,17 @@
                     {{#esEach index="resources"}}
                     <a href="{{link}}" target="_blank" class="item animated fadeInLeft">
                         <i class="{{iconClass}} course-type icon"></i>
+                        {{#if hasLiked}}
+                            <div class="ui basic like trigger-dislike active button">
+                                {{count likes}}
+                                <i class="like icon"></i>
+                            </div>
+                        {{else}}
+                            <div class="ui basic like trigger-like button">
+                                {{count likes}}
+                                <i class="like icon"></i>
+                            </div>
+                        {{/if}}
                         <div class="content">
                             ({{category}})<div class="header">{{name}}</div>
                         </div>

@@ -2,14 +2,18 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "iron-router": {},
+      "iron-router": {
+        "version": "0.8.2"
+      },
       "handlebar-helpers": {},
       "iron-router-progress": {},
       "semantic-ui": {},
       "collection2": {},
       "sugarjs": {},
       "easy-search": {},
-      "animate-css": {}
+      "animate-css": {},
+      "accounts-guest": {},
+      "cron-tick": {}
     },
     "packages": {
       "iron-router": {
@@ -51,6 +55,16 @@
         "git": "https://github.com/nate-strauser/meteor-animate-css.git",
         "tag": "v3.1.1",
         "commit": "59ce70b99dff5bc3d1227b789eefa43a761db158"
+      },
+      "accounts-guest": {
+        "git": "https://github.com/artwells/meteor-accounts-guest.git",
+        "tag": "v0.0.6",
+        "commit": "f40bcf1f9e5999c70ab81a4f1e7a39f3ce78aa57"
+      },
+      "cron-tick": {
+        "git": "https://github.com/tmeasday/meteor-cron.git",
+        "tag": "v0.0.4",
+        "commit": "44cff9116af510fe53704fdeeff57c444ceb75ba"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",

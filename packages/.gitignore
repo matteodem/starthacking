@@ -28,3 +28,5 @@ iron-router-progress
 /velocity
 /mocha-web-velocity
 /mirror
+/accounts-guest
+/cron-tick

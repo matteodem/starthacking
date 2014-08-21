@@ -8,6 +8,10 @@ UI.registerHelper('isActive', function (siteName) {
   return 'not-active';
 });
 
+UI.registerHelper('count', function (array) {
+  return array.length;
+});
+
 UI.registerHelper('debug', function (optionalValue) {
   if (typeof console !== "undefined" || typeof console.log !== "undefined") {
     console.log("Current Context");

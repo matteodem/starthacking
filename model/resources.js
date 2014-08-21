@@ -13,7 +13,12 @@ Resources = new Meteor.Collection('resources', {
       type : String
     },
     likes :  {
-      type : Number
+      type : [String],
+      autoValue : function () {
+        if (this.isInsert) {
+          return [];
+        }
+      }
     }
   })
 });
@@ -32,8 +37,51 @@ Resources.allow({
   }
 });
 
+Resources.addLike = function (docId) {
+  Meteor.call('addLike', docId);
+};
+
+Resources.removeLike = function (docId) {
+  Meteor.call('removeLike', docId);
+};
+
+Meteor.methods({
+  'addLike' : function (id) {
+    check(id, String);
+
+    var userId = Meteor.userId();
+
+    if (!userId || Resources.findOne({ _id : id, likes : userId })) {
+      return;
+    }
+
+    Resources.update(id, { $push: { likes: userId } });
+  },
+  'removeLike' : function (id) {
+    check(id, String);
+
+    var userId = Meteor.userId();
+
+    if (!userId || !Resources.findOne({ _id : id, likes : userId })) {
+      return;
+    }
+
+    Resources.update(id, { $pull: { likes: userId } });
+  }
+});
 
 // Easy Search Configuration
 Resources.initEasySearch(['name', 'link'], {
-  limit : 10
+  limit : 10,
+  query: function (searchString) {
+    var query = EasySearch.getSearcher('mongo-db').defaultQuery(this, searchString);
+
+    // Only completely match the link
+    query.$or[1] = { 'link' : searchString };
+
+    return query;
+  },
+  sort : function () {
+    return { 'likes' : -1 };
+  }
 });
