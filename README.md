@@ -1,3 +1,3 @@
 # StartHacking
 
-This WIP uses Meteor and the [Boilerplate Project](https://github.com/matteodem/meteor-boilerplate).
+Deployed on http://starthacking.meteor.com/ and created with the [Boilerplate](https://github.com/matteodem/meteor-boilerplate)
