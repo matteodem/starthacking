@@ -4,7 +4,7 @@ Session.setDefault('searchMode', 'initial');
 
 Template.searchbar.created = function () {
   Deps.autorun(function () {
-    if (EasySearch.ComponentVariables.get('resources', 'searchingDone')) {
+    if (EasySearch.Components.Variables.get('resources', 'searchingDone')) {
       Session.set('searchMode', 'done');
     }
   });
