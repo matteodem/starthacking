@@ -1,1 +1,1 @@
-Meteor.subscribe('resources');
+//Meteor.subscribe('resources');

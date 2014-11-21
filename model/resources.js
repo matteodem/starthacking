@@ -12,6 +12,13 @@ Resources = new Meteor.Collection('resources', {
     category : {
       type : String
     },
+    likesCount : {
+      type : Number,
+      optional : true,
+      autoValue : function () {
+        return this.field('likes').length;
+      }
+    },
     likes :  {
       type : [String],
       autoValue : function () {
@@ -55,7 +62,7 @@ Meteor.methods({
       return;
     }
 
-    Resources.update(id, { $push: { likes: userId } });
+    Resources.update(id, { $push: { likes: userId }, $set : { likesCount: Resources.findOne({ _id : id }).likes.length + 1 } });
   },
   'removeLike' : function (id) {
     check(id, String);
@@ -66,22 +73,22 @@ Meteor.methods({
       return;
     }
 
-    Resources.update(id, { $pull: { likes: userId } });
+    Resources.update(id, { $pull: { likes: userId }, $set : { likesCount: Resources.findOne({ _id : id }).likes.length - 1 } });
   }
 });
 
 // Easy Search Configuration
 Resources.initEasySearch(['name', 'link'], {
   limit : 10,
-  query: function (searchString) {
-    var query = EasySearch.getSearcher('mongo-db').defaultQuery(this, searchString);
+  /*query: function (searchString) {
+    var query = EasySearch.getSearcher(this.use).defaultQuery(this, searchString);
 
     // Only completely match the link
     query.$or[1] = { 'link' : searchString };
 
     return query;
-  },
+  },*/
   sort : function () {
-    return { 'likes' : -1 };
+    return { 'likesCount' : -1, 'name' : 1 };
   }
 });

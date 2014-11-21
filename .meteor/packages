@@ -19,4 +19,7 @@ iron:router
 mrt:cron-tick
 aldeed:simple-schema
 matteodem:easy-search
+aldeed:collection2
+meteorhacks:fast-render
+natestrauser:animate-css
 

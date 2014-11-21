@@ -3,11 +3,11 @@ var searchTermCache = '';
 Session.setDefault('searchMode', 'initial');
 
 Template.searchbar.created = function () {
-  Deps.autorun(function () {
-    if (EasySearch.Components.Variables.get('resources', 'searchingDone')) {
+  EasySearch.getComponentInstance({ index: "resources" }).on('searchingDone', function (hasSearched) {
+    if (hasSearched) {
       Session.set('searchMode', 'done');
     }
-  });
+  }, Template.searchbar.autorun);
 };
 
 Template.searchbar.helpers({

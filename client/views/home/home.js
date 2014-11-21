@@ -3,10 +3,10 @@ Template.home.helpers({
     return Session.equals('searchMode', 'initial');
   },
   'moreThanZeroResources' : function () {
-    return Resources.find().count() > 0;
+    return Session.get('resourcesCount') > 0;
   },
   'resourcesCount' : function () {
-    return Resources.find().count();
+    return Session.get('resourcesCount');
   },
   'hasLiked' : function () {
     return Resources.findOne({ _id : this._id, likes : Meteor.userId() });
@@ -24,6 +24,12 @@ Template.home.helpers({
     }
   }
 });
+
+Template.home.created = function () {
+  Meteor.call('resourcesCount', function (err, data) {
+    Session.set('resourcesCount', data);
+  });
+};
 
 Template.home.events({
   'click .search-example' : function (e) {

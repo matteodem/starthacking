@@ -32,7 +32,7 @@ function importResources(type, importUrl) {
             url = bookParts[1].slice(0, -1).remove(/(\)|\(|\[|\]).+/g);
 
           if (url.startsWith('http')) {
-            Resources.insert({ name : name, link : url, type : type, category : ct, likes : [] });
+            Resources.insert({ name : name, link : url, type : type, category : ct, likes : [], likesCount: 0 });
           }
         });
       }
@@ -42,6 +42,8 @@ function importResources(type, importUrl) {
 
 Meteor.startup(function () {
   var githubUrl = 'https://raw.githubusercontent.com/vhf/free-programming-books/master/';
+
+  //Resources.remove({});
 
   if (Resources.find().count() === 0) {
     (['free-programming-books.md', 'javascript-frameworks-resources.md']).forEach(function (md) {
