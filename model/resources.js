@@ -80,14 +80,14 @@ Meteor.methods({
 // Easy Search Configuration
 Resources.initEasySearch(['name', 'link'], {
   limit : 10,
-  /*query: function (searchString) {
+  query: function (searchString) {
     var query = EasySearch.getSearcher(this.use).defaultQuery(this, searchString);
 
     // Only completely match the link
     query.$or[1] = { 'link' : searchString };
 
     return query;
-  },*/
+  },
   sort : function () {
     return { 'likesCount' : -1, 'name' : 1 };
   }
